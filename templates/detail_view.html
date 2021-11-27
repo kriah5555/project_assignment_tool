@@ -1,0 +1,98 @@
+{% extends 'base_bootstrap4.html' %}
+{% load static %}
+{% block title %}Detail view{% endblock %}
+
+
+
+{% block nav %}
+    <br>
+    <//detail list of employees //>
+    <center><h3>Employees list with details</h3></center>
+    <br>
+        <form class="form-inline my-2 my-lg-0" method = 'POST' action = '{% url "detail_view" %}'> {% csrf_token %}
+            <input class="form-control mr-sm-2" type="search" placeholder="Employee name" aria-label="Search" name = 'search_employee'> 
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >Search Employee</button>
+        </form>
+        <div class="border-top my-2"></div>
+    <!--
+    <table class="table table-dark ">
+
+    <//heading //>
+    <thead> 
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>   
+        <th scope="col">Username</th>
+        <th scope="col">Emailid</th>
+        <th scope="col">Designation</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+                <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{user.name}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.emailid}}</td>
+                <th scope="col">{{user.pojession}}</th>
+                </tr>
+        {% endfor %} 
+    </tbody>   
+    -->
+    <!--
+    <// list of employees //>
+
+
+    <table class="table">
+        <// heading //>
+        <thead class="thead-dark">
+            <tr>
+                <th>Employee Name</th>
+                <th>Designation</th>
+            </tr>
+        </thead>
+        <// body //>
+        <tbody>
+            {% for user in users %}
+                
+                    <tr>
+                        <td><a href="{% url 'employee_projects' user.name %}" >{{user.name}}</a></td>
+                        <td>{{user.pojession}}</td>
+                        
+                    </tr>
+            {% endfor %}           
+        </tbody>
+    </table>
+    -->
+
+
+
+    <// list of employees //>
+    {% for user in users %}
+    <div class="card-header pmd-card-border d-flex flex-row align-items-center">
+        
+            <img src="{{user.image.url}}" width="40" height="40" alt="Profile Picture">
+        
+        <div class="media-body">
+            <h3 class="card-title">{{user.name}}</h3>
+            <p class="card-subtitle">{{user.pojession}}</p>
+        </div>
+        <div class="dropdown pmd-dropdown pmd-user-info ml-auto">
+            <a href="{% url 'employee_projects' user.name %}" class="pmd-btn-fab btn-dark pmd-btn-flat btn btn-sm" aria-expanded="true">
+                <i class="material-icons pmd-icon-sm">Vied More</i>
+            </a>
+        </div>
+    </div>
+
+
+    <// link to emplayee details //>
+    
+    <div class="border-top my-2"></div>
+    {% endfor %}  
+
+
+
+    
+
+{% endblock %}
+

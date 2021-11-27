@@ -1,0 +1,30 @@
+{% extends 'base_bootstrap4.html' %}
+
+{% block title %}Assign project{% endblock %}
+
+
+
+{% block nav %}
+
+    <center><br><h3>Assign project</h3></center>
+
+    <br><center><h4>Assign employee for : {{project_name}}</h4></center>
+
+    
+    <form action="{% url 'assign_project' project_name %}" method = 'POST'> {% csrf_token %}
+        <select class="form-control form-control-rg" name = 'selectedvlauehh'> 
+            
+            <option vale = ''></option>
+            {% for i in employees %}
+            <option vale = '{{i}}'>{{i}}</option>
+            {% endfor %}
+        </select>
+        
+        <center><br><h4> {{status}}</h4></center>
+        <br>
+        <center><button type="submit" class="btn btn-primary" required = True>Assign Employee </button></center>  
+   
+
+
+    </form>
+{% endblock %}

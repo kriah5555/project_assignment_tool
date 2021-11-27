@@ -1,0 +1,45 @@
+{% extends 'base_bootstrap4.html' %}
+
+{% block title %}Project list{% endblock %}
+
+
+
+{% block nav %}
+
+
+    <// Projects table//>
+
+    <center><br><h3>Project list with details</h3><br></center>
+        <form class="form-inline my-2 my-lg-0" method = 'POST' action = '{% url "project_list_page" %}'> {% csrf_token %}
+        <input class="form-control mr-sm-2" type="search" placeholder="Project name" aria-label="Search" name = 'search_project'> 
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >Search Project</button>
+        </form>
+
+    <table class="table">
+        <// heading //>
+        <thead class="thead-dark">
+            <tr>
+                <th>Project Name</th>
+                <th>Projedct Manager</th>
+                <th>Projedct Start Time</th>
+                <th>Project End Time</th>
+                <th>Poject status </th>
+            </tr>
+        </thead>
+        <// body //>
+        <tbody>
+            {% for project in projects %}
+                
+                    <tr>
+                        <td><a href="{% url 'assign_project' project.project_name %}" >{{ project.project_name }}</a></td>
+                        <td>{{ project.manager.name }}</td>
+                        <td>{{ project.projedct_start_time }}</td>
+                        
+                        <td>{{ project.project_end_time }}</td>
+                        <td>{{ project.project_status }}</td>
+                    </tr>
+            {% endfor %}           
+        </tbody>
+    </table>
+{% endblock %}
+

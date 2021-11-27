@@ -1,0 +1,35 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container "> 
+    <center><h2>Hi Krishne</h2></center>
+    <center><h3>Welcome to project login page</h3></center>
+    <center>
+      <form method = 'POST' action='{% url "authentication" %}'>{% csrf_token %}
+        <div class="form-group">
+          <label for="usr">Username:</label>
+          <input type="text" class="form-control" name = 'username' required = True style="width: 30%;">
+        </div>
+
+        <div class="form-group length:15">
+          <label for="pwd">Password:</label>
+          <input type="password" class="form-control" name = 'password' required = True style="width: 30%;">  
+        </div>
+
+        <div class="form-group length:15">
+        
+          <input type="submit" class="bg-primary text-white" value = 'Login' style="width: 10%;">
+        </div>
+          <div class="form-group length:15">  
+
+          <a href="/admin/"><label>Click here to login as admin</label></a>
+          
+        
+      </form>
+    </center>
+  </div>
+
+  
+  {% endblock %}
+  

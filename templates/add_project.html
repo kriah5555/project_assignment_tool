@@ -1,0 +1,33 @@
+{% extends 'base_bootstrap4.html' %}
+
+{% block title %}Add projetc{% endblock %}
+
+
+
+{% block nav %}
+    <br>
+    <center><h3>Add project</h3></center>
+    <br>
+    <form action = '{% url "addproject"%}' method="POST"> {% csrf_token %}
+        <div class="form-group row">
+            <label for="example-text-input" class="col-2 col-form-label" >Project Name</label>
+            <div class="col-10">
+            <input class="form-control" type="text" id="example-text-input" name = 'project_name' required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="example-date-input" class="col-2 col-form-label" >Start Date</label>
+            <div class="col-10">
+            <input class="form-control" type="date" id="example-date-input" name = 'projedct_start_time' required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="example-date-input" class="col-2 col-form-label" >End Date</label>
+            <div class="col-10">
+            <input class="form-control" type="date" id="example-date-input" name = 'project_end_time' required>
+            </div>
+        </div>
+        <center><button type="submit" class="btn btn-primary">Add Project </button></center>  
+    </form>
+    
+{% endblock %}
